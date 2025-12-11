@@ -1,5 +1,6 @@
 # OAC Projeto Final – Arquitetura C
-<img width="919" height="693" alt="image" src="https://github.com/user-attachments/assets/bddcf2d0-679a-4712-8033-034e3011ecf2" />
+![WhatsApp Image 2025-12-11 at 17 21 45](https://github.com/user-attachments/assets/48759e5d-dc72-438c-a3fc-95fa53b1e94b)
+
 
 Tutorial de Execução
 
