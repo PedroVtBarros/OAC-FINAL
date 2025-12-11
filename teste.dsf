@@ -1,0 +1,25 @@
+N
+resultado:
+
+; N = 5
+moveImmReg 5 %REG0
+moveRegMem %REG0 N
+
+; soma = 0
+moveImmReg 0 %REG1
+
+; i = 1
+moveImmReg 1 %REG2
+
+; REG0 = N (limite)
+moveMemReg N %REG0
+
+inicio:
+jeq %REG2 %REG0 fim
+add %REG2 %REG1
+inc %REG2
+jmp inicio
+
+fim:
+moveRegMem %REG1 resultado
+END

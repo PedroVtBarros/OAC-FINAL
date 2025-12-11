@@ -1,0 +1,56 @@
+M
+N
+resultado:
+
+jmp start     ; pula funções
+
+; -----------------------
+; Função somaElemento
+; Entrada: REG0 = número atual
+; Saída: REG3 = acumulador atualizado
+; -----------------------
+somaElemento:
+add %REG0 %REG3
+ret
+
+; -----------------------
+; Função proximo
+; REG0 = REG0 + 1
+; -----------------------
+proximo:
+inc %REG0
+ret
+
+; -----------------------
+; Função condicaoFim
+; Se REG0 > REG1 → fim
+; -----------------------
+condicaoFim:
+jgt %REG0 %REG1 fim
+ret
+
+; -----------------------
+start:
+; inicializa soma
+move 0 %REG3
+
+; define M e N
+move 3 %REG0      ; M
+move 8 %REG1      ; N
+
+loop:
+
+; verifica se fim
+call condicaoFim
+
+; soma REG0 no acumulador
+call somaElemento
+
+; incrementa REG0
+call proximo
+
+jmp loop
+
+fim:
+; salva soma no resultado
+move %REG3 resultado

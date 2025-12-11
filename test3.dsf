@@ -1,0 +1,67 @@
+N
+i
+resultado
+
+; -- Defina aqui o valor de N
+move 10 %REG0
+move %REG0 N
+
+; Inicializa a sequência: a = 0, b = 1
+move 0 %REG1    ; REG1 = a (F0)
+move 1 %REG2    ; REG2 = b (F1)
+
+; Se N == 0 -> resultado = a
+move N %REG0
+move 0 %REG3
+jeq %REG0 %REG3 ret_zero
+
+; Se N == 1 -> resultado = b
+move 1 %REG3
+jeq %REG0 %REG3 ret_one
+
+; inicializa contador i = 2
+move 2 %REG3
+move %REG3 i
+
+loop:
+; carrega i para REG3
+move i %REG3
+
+; se i > N, acabou (já calculamos até N)
+jgt %REG3 %REG0 end_loop
+
+; temp = b  (temp em REG3)
+move %REG2 %REG3
+
+; temp = temp + a  -> temp = a + b
+add %REG1 %REG3
+
+; a = b
+move %REG2 %REG1
+
+; b = temp
+move %REG3 %REG2
+
+; i = i + 1
+move i %REG3
+inc %REG3
+move %REG3 i
+
+; volta ao loop
+jmp loop
+
+ret_zero:
+; resultado = a (F0 = 0)
+move %REG1 resultado
+jmp END
+
+ret_one:
+; resultado = b (F1 = 1)
+move %REG2 resultado
+jmp END
+
+end_loop:
+; quando sair do loop, b contém F_N (último calculado)
+move %REG2 resultado
+
+END:
