@@ -1,6 +1,6 @@
 M
 N
-resultado:
+resultado
 
 jmp start     ; pula funções
 
