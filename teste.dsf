@@ -1,5 +1,5 @@
 N
-resultado:
+resultado
 
 ; N = 5
 moveImmReg 5 %REG0
